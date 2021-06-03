@@ -9,6 +9,9 @@
   display:flex;
   flex-direction: column;
 }
+.submitButton{
+  margin-top: 15px;
+}
 div.field {
     margin: 1em 0 2em;
 }

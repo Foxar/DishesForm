@@ -1,7 +1,7 @@
 
 import './../styles/DishesForm.css';
 import React from 'react';
-import { Paper, TextField, Typography, Select, MenuItem } from '@material-ui/core';
+import { Paper, TextField, Typography, Select, MenuItem, Button } from '@material-ui/core';
 import { TimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 
@@ -89,6 +89,7 @@ class DishesForm extends React.Component
           <MenuItem value={3}>Sandwich</MenuItem>
         </Select>
         {additionalForm}
+        <Button clasName="submitButton" variant="contained">Submit</Button>
 
       </Paper>
     );
