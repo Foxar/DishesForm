@@ -5,6 +5,10 @@
     width: fit-content;
     padding: 5em;
   }
+.additionals {
+  display:flex;
+  flex-direction: column;
+}
 div.field {
     margin: 1em 0 2em;
 }
