@@ -2,8 +2,6 @@
 import './../styles/DishesForm.css';
 import React from 'react';
 import { Paper, TextField, Typography, Select, MenuItem, Button } from '@material-ui/core';
-import { TimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
 
 class DishesForm extends React.Component
 {

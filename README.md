@@ -10,4 +10,3 @@ Currently used technologies:
 - React
 - Npm
 - Material-ui react framework
-- date-io library
