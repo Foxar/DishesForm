@@ -1,0 +1,9 @@
+@import "colors.scss";
+@import "DishesForm.scss";
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: $primary;
+}

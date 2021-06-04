@@ -1,0 +1,22 @@
+div.dishesForm {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding: 5em;
+    background-color: $primary-light;
+    .additionals {
+      display:flex;
+      flex-direction: column;
+    }
+    button.submitButton{
+      margin-top: 15px;
+      background-color: $accent;
+    }
+    button.submitButton:hover{
+      background-color: $accent-light;
+    }
+    div.field {
+        margin: 0 0 2em;
+    }
+  }
