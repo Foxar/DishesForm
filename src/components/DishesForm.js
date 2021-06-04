@@ -10,12 +10,7 @@ class DishesForm extends React.Component
   constructor(props){
     super(props);
     this.state={
-      name:"",
-      time:15,
-      diameter: 15,
-      sandwichSlices:  4,
-      pizzaSlices: 6,
-      selectedType: null,
+
     };
     
     this.handleSpicyChange = this.handleSpicyChange.bind(this);
@@ -56,6 +51,7 @@ class DishesForm extends React.Component
     return(
       <Paper className="dishesForm">
         <Typography variant='h4'>Please fill out the following data:</Typography>
+        <Typography variant='subtitle1'>Name of the dish</Typography>
         <TextField 
           className="field"
           variant="filled"
@@ -71,12 +67,13 @@ class DishesForm extends React.Component
           type="text"
           value={this.state.time}
           onChange={this.handleFormChange}/>
-        <Select onChange={this.handleSelectChange}>
+          <Typography variant='subtitle1'>Type of the dish</Typography>
+        <Select className="field" onChange={this.handleSelectChange}>
           <MenuItem value={0}>Pizza</MenuItem>
           <MenuItem value={1}>Soup</MenuItem>
           <MenuItem value={2}>Sandwich</MenuItem>
         </Select>
-        {this.state.selectedType && additionalForms[this.state.selectedType]}
+        {this.state.selectedType != undefined && additionalForms[this.state.selectedType]}
         <Button className="submitButton" variant="contained">Submit</Button>
 
       </Paper>
