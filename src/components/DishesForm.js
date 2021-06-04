@@ -1,5 +1,4 @@
 
-import './../styles/DishesForm.css';
 import React from 'react';
 import { Paper, TextField, Typography, Select, MenuItem, Button } from '@material-ui/core'; 
 import { SpicyForm, PizzaForm, SandwichForm } from './AdditionalForms/AdditionalForms';
@@ -57,6 +56,7 @@ class DishesForm extends React.Component
           variant="filled"
           name="name"
           placeholder="Name"
+          size="small"
           value={this.state.name}
           onChange={this.handleFormChange}/>
         <Typography variant='subtitle1'>Preparation duration</Typography>
@@ -65,6 +65,7 @@ class DishesForm extends React.Component
           variant="filled"
           name="time"
           type="text"
+          size="small"
           value={this.state.time}
           onChange={this.handleFormChange}/>
           <Typography variant='subtitle1'>Type of the dish</Typography>
