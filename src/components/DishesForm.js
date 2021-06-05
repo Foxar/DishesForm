@@ -10,13 +10,14 @@ class DishesForm extends React.Component
   constructor(props){
     super(props);
     this.state={
-
+      time: "00:00:00"
     };
     
     this.handleSpicyChange = this.handleSpicyChange.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleFormRequest = handleFormRequest.bind(this);
+    this.handleTimeChange = this.handleTimeChange.bind(this);
   }
 
   handleFormChange(e){
@@ -29,6 +30,15 @@ class DishesForm extends React.Component
       });
     }
     console.log(this.state);
+  }
+
+  handleTimeChange(e){
+    let timeArr = e.target.value.split("");
+    let finalTime = `${timeArr[0]}${timeArr[1]}:${timeArr[2]}${timeArr[3]}:${timeArr[4]}${timeArr[5]}`;
+    this.setState({
+      time: finalTime
+    });
+
   }
 
   handleSpicyChange(e){
@@ -70,7 +80,7 @@ class DishesForm extends React.Component
           type="text"
           size="small"
           value={this.state.time}
-          onChange={this.handleFormChange}/>
+          onChange={this.handleTimeChange}/>
           <Typography variant='subtitle1'>Type of the dish</Typography>
         <Select className="field" onChange={this.handleSelectChange}>
           <MenuItem value="pizza">Pizza</MenuItem>
