@@ -4,17 +4,17 @@ div.dishesForm {
     flex-direction: column;
     width: fit-content;
     padding: 5em;
-    background-color: $primary-light;
+    background-color: honeydew;
     .additionals {
       display:flex;
       flex-direction: column;
     }
     button.submitButton{
       margin-top: 15px;
-      background-color: $accent;
+      background-color: $primary;
     }
     button.submitButton:hover{
-      background-color: $accent-light;
+      background-color: $primary-light;
     }
     div.field {
         margin: 0 0 2em;
