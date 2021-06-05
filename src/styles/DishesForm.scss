@@ -1,22 +1,25 @@
 div.dishesForm {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
     width: fit-content;
     padding: 5em;
     background-color: honeydew;
-    .additionals {
-      display:flex;
+    margin: 0 auto;
+    form{
+      
+      display: flex;
       flex-direction: column;
-    }
-    button.submitButton{
-      margin-top: 15px;
-      background-color: $primary;
-    }
-    button.submitButton:hover{
-      background-color: $primary-light;
-    }
-    div.field {
-        margin: 0 0 2em;
+      .additionals {
+        display:flex;
+        flex-direction: column;
+      }
+      button.submitButton{
+        margin-top: 15px;
+        background-color: $primary;
+      }
+      button.submitButton:hover{
+        background-color: $primary-light;
+      }
+      div.field {
+          margin: 0 0 2em;
+      }
     }
   }

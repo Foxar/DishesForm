@@ -2,6 +2,7 @@
 import React from 'react';
 import { Paper, TextField, Typography, Select, MenuItem, Button } from '@material-ui/core'; 
 import { SpicyForm, PizzaForm, SandwichForm } from './AdditionalForms/AdditionalForms';
+import { handleFormRequest } from '../services/hadleFormRequest';
 
 
 class DishesForm extends React.Component
@@ -15,11 +16,12 @@ class DishesForm extends React.Component
     this.handleSpicyChange = this.handleSpicyChange.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.handleFormRequest = handleFormRequest.bind(this);
   }
 
   handleFormChange(e){
     let formNames=[
-      "name","time","spicyness","slices","diameter"
+      "name","time","spicyness","slices","diameter","pizzaSlices"
     ];
     if(formNames.includes(e.target.name)){
       this.setState({
@@ -41,14 +43,15 @@ class DishesForm extends React.Component
     })
   }
   render(){
-    let additionalForms =[
-      <PizzaForm diameter={this.state.diameter} handleChange={this.handleFormChange} />,
-      <SpicyForm spicyScale={this.state.spicyScale} handleSpicyChange={this.handleSpicyChange}/>,
-      <SandwichForm sandwichSlices={this.state.sandwichSlices} handleChange={this.handleFormChange}/>
-    ];
+    let additionalForms ={
+      pizza: <PizzaForm pizzaSlices={this.state.pizzaSlices} diameter={this.state.diameter} handleChange={this.handleFormChange} />,
+      soup: <SpicyForm spicyScale={this.state.spicyScale} handleSpicyChange={this.handleSpicyChange}/>,
+      sandwich: <SandwichForm sandwichSlices={this.state.sandwichSlices} handleChange={this.handleFormChange}/>
+    }
     
     return(
       <Paper className="dishesForm">
+        <form autoComplete="off" onSubmit={this.handleFormRequest}>
         <Typography variant='h4'>Please fill out the following data:</Typography>
         <Typography variant='subtitle1'>Name of the dish</Typography>
         <TextField 
@@ -70,12 +73,13 @@ class DishesForm extends React.Component
           onChange={this.handleFormChange}/>
           <Typography variant='subtitle1'>Type of the dish</Typography>
         <Select className="field" onChange={this.handleSelectChange}>
-          <MenuItem value={0}>Pizza</MenuItem>
-          <MenuItem value={1}>Soup</MenuItem>
-          <MenuItem value={2}>Sandwich</MenuItem>
+          <MenuItem value="pizza">Pizza</MenuItem>
+          <MenuItem value="soup">Soup</MenuItem>
+          <MenuItem value="sandwich">Sandwich</MenuItem>
         </Select>
         {this.state.selectedType != undefined && additionalForms[this.state.selectedType]}
-        <Button className="submitButton" variant="contained">Submit</Button>
+        <Button className="submitButton" variant="contained" type="submit" value="submit">Submit</Button>
+        </form>
 
       </Paper>
     );
