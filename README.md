@@ -3,10 +3,18 @@
 This repository is a very simple recruitment task I'm doing.
 
 # Installation
-Simply run `npm install` to install the dependdancies, then `npm run` to start the local server with React App.
+1: Clone the repository:
+ `git clone https://github.com/Foxar/DishesForm`
+2: Install node dependancies:
+ `npm install`
+3: Start local server:
+ `npm run start`
 
 # Technologies
 Currently used technologies:
 - React
 - Npm
 - Material-ui react framework
+- axios
+- Node sass
+
