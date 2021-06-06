@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Paper, TextField, Typography, Select, MenuItem, Button } from '@material-ui/core'; 
+import { Paper, TextField, Typography, Select, MenuItem, Button, FormControl, FormHelperText } from '@material-ui/core'; 
 import { SpicyForm, PizzaForm, SandwichForm } from './AdditionalForms/AdditionalForms';
+import {CollapsingMessage, setError, setSuccess}  from './CollapsingError/CollapsingMessage';
 import { handleFormRequest } from '../services/hadleFormRequest';
 
 
@@ -10,7 +11,7 @@ class DishesForm extends React.Component
   constructor(props){
     super(props);
     this.state={
-      time: "00:00:00"
+      time: "00:00:00",
     };
     
     this.handleSpicyChange = this.handleSpicyChange.bind(this);
@@ -18,11 +19,13 @@ class DishesForm extends React.Component
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleFormRequest = handleFormRequest.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
+    this.setError = setError.bind(this);
+    this.setSuccess = setSuccess.bind(this);
   }
 
   handleFormChange(e){
     let formNames=[
-      "name","time","spicyness","slices","diameter","pizzaSlices",
+      "name","time","spicyness","slices_of_bread","diameter","pizzaSlices",
       "timeHour","timeMinute","timeSecond"
     ];
     if(formNames.includes(e.target.name)){
@@ -46,25 +49,33 @@ class DishesForm extends React.Component
     this.setState({
       spicyScale: spicy
     });
+    this.setError("Test");
   }
   handleSelectChange(e){
     this.setState({
       selectedType: e.target.value
     })
   }
+  
   render(){
     let additionalForms ={
-      pizza: <PizzaForm pizzaSlices={this.state.pizzaSlices} diameter={this.state.diameter} handleChange={this.handleFormChange} />,
-      soup: <SpicyForm spicyScale={this.state.spicyScale} handleSpicyChange={this.handleSpicyChange}/>,
-      sandwich: <SandwichForm sandwichSlices={this.state.sandwichSlices} handleChange={this.handleFormChange}/>
+      pizza: <PizzaForm errorMessage={this.state.errorMessage} errorType={this.state.errorType} pizzaSlices={this.state.pizzaSlices} diameter={this.state.diameter} handleChange={this.handleFormChange} />,
+      soup: <SpicyForm errorMessage={this.state.errorMessage} errorType={this.state.errorType} spicyScale={this.state.spicyScale} handleSpicyChange={this.handleSpicyChange}/>,
+      sandwich: <SandwichForm errorMessage={this.state.errorMessage} errorType={this.state.errorType} sandwichSlices={this.state.sandwichSlices} handleChange={this.handleFormChange}/>
     }
-    
+    console.log("check");
+    console.log(this.state.errorType === "name");
+    console.log("success? ",this.state.success)
     return(
       <Paper className="dishesForm">
+        {this.state.error?<CollapsingMessage error={this.state.error} errorMessage={"Error submitting the message!"}/>:""}
+        {this.state.success?<CollapsingMessage success={this.state.success} succesMessage={this.state.successMessage}/>:""}
         <form autoComplete="off" onSubmit={this.handleFormRequest}>
         <Typography variant='h4'>Please fill out the following data:</Typography>
         <Typography variant='subtitle1'>Name of the dish</Typography>
         <TextField 
+          error={this.state.errorType === "name"}
+          helperText={this.state.errorType ==="name"?this.state.errorMessage:""}
           className="field"
           variant="filled"
           name="name"
@@ -102,13 +113,15 @@ class DishesForm extends React.Component
             value={this.state.timeSecond}
             onChange={this.handleTimeChange}/>
           </div>
-        
           <Typography variant='subtitle1'>Type of the dish</Typography>
-        <Select className="field" onChange={this.handleSelectChange}>
+        <FormControl className="field">
+        <Select error={this.state.errorType==="type"} onChange={this.handleSelectChange}>
           <MenuItem value="pizza">Pizza</MenuItem>
           <MenuItem value="soup">Soup</MenuItem>
           <MenuItem value="sandwich">Sandwich</MenuItem>
         </Select>
+        {this.state.errorType === "type" && <FormHelperText>{this.state.errorMessage}</FormHelperText>}
+        </FormControl>
         {this.state.selectedType != undefined && additionalForms[this.state.selectedType]}
         <Button className="submitButton" variant="contained" type="submit" value="submit">Submit</Button>
         </form>
