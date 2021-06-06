@@ -74,6 +74,7 @@ class DishesForm extends React.Component
           className="field"
           variant="filled"
           name="name"
+          required={true}
           placeholder="Name"
           size="small"
           value={this.state.name}
@@ -85,6 +86,7 @@ class DishesForm extends React.Component
             variant="filled"
             name="timeHour"
             type="number"
+            required={true}
             size="small"
             placeholder="Hours"
             value={this.state.timeHour}
@@ -94,6 +96,7 @@ class DishesForm extends React.Component
             variant="filled"
             name="timeMinute"
             type="number"
+            required={true}
             size="small"
             placeholder="Minutes"
             value={this.state.timeMinute}
@@ -103,6 +106,7 @@ class DishesForm extends React.Component
             variant="filled"
             name="timeSecond"
             type="number"
+            required={true}
             size="small"
             placeholder="Seconds"
             value={this.state.timeSecond}

@@ -12,6 +12,7 @@ export function SpicyForm(props){
           variant="filled" 
           value={props.spicyScale} 
           type="number" 
+          required={true}
           error={props.errorType === "spiciness_scale"}
           helperText={props.errorType ==="spiciness_scale"?props.errorMessage:""}
           onChange={props.handleSpicyChange} 
@@ -31,6 +32,7 @@ export function SandwichForm(props){
           variant="filled" 
           value={props.slices_of_bread} 
           type="number" 
+          required={true}
           error={props.errorType === "slices_of_bread"}
           helperText={props.errorType ==="slices_of_bread"?props.errorMessage:""}
           onChange={props.handleChange} 
@@ -53,6 +55,7 @@ export function PizzaForm(props){
           onChange={props.handleChange} 
           variant="filled" 
           type="number" 
+          required={true}
           placeholder="Number of slices"/>
         <Typography variant='subtitle1'>Diameter of the pizza:</Typography>
         <TextField 
@@ -65,6 +68,7 @@ export function PizzaForm(props){
           onChange={props.handleChange} 
           variant="filled" 
           type="number" 
+          required={true}
           step="0.01" 
           placeholder="Diameter"/>
     </div>
