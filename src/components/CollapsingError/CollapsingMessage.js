@@ -9,11 +9,9 @@ export function setError(msg,type) {
         success: false,
         successMessage: ""
     });
-    console.log(msg,type);
 }
 
 export function setSuccess(){
-    console.log("Setting success");
     this.setState({
         success: true,
         successMessage: "Success!",
@@ -24,10 +22,7 @@ export function setSuccess(){
 }
 
 export function CollapsingMessage(props){
-    console.log("Collapsing");
-    console.log(props);
     let open = props.error || props.success;
-    console.log(open);
     return(
     <Collapse in={open}>
         <Typography 
