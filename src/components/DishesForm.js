@@ -33,7 +33,6 @@ class DishesForm extends React.Component
         [e.target.name]: e.target.value
       });
     }
-    console.log(this.state);
   }
 
   handleTimeChange(e){
@@ -49,7 +48,6 @@ class DishesForm extends React.Component
     this.setState({
       spicyScale: spicy
     });
-    this.setError("Test");
   }
   handleSelectChange(e){
     this.setState({
@@ -63,9 +61,6 @@ class DishesForm extends React.Component
       soup: <SpicyForm errorMessage={this.state.errorMessage} errorType={this.state.errorType} spicyScale={this.state.spicyScale} handleSpicyChange={this.handleSpicyChange}/>,
       sandwich: <SandwichForm errorMessage={this.state.errorMessage} errorType={this.state.errorType} sandwichSlices={this.state.sandwichSlices} handleChange={this.handleFormChange}/>
     }
-    console.log("check");
-    console.log(this.state.errorType === "name");
-    console.log("success? ",this.state.success)
     return(
       <Paper className="dishesForm">
         {this.state.error?<CollapsingMessage error={this.state.error} errorMessage={"Error submitting the message!"}/>:""}
