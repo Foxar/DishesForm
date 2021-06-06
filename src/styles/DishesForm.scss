@@ -1,3 +1,22 @@
+.collapsingMessage{
+  text-align: center;
+}
+
+.collapsingMessage.error{
+  //background-color: red;
+  color:red;
+}
+
+.collapsingMessage.success{
+  //background-color: green;
+  color: green;
+}
+
+p.MuiFormHelperText-root{
+  color:red;
+}
+
+
 div.dishesForm {
     max-width: 40vw;
     padding: 5em;
