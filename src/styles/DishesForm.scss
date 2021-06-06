@@ -1,5 +1,5 @@
 div.dishesForm {
-    width: fit-content;
+    max-width: 40vw;
     padding: 5em;
     background-color: honeydew;
     margin: 0 auto;
@@ -20,6 +20,20 @@ div.dishesForm {
       }
       div.field {
           margin: 0 0 2em;
+      }
+      
+      input.time::-webkit-datetime-edit-ampm-field {
+        display: none;
+      }
+      .timePick{
+        display:flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-evenly;
+        .timeField{
+          width: 20%;
+          
+        }
       }
     }
   }

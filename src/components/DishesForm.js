@@ -22,7 +22,8 @@ class DishesForm extends React.Component
 
   handleFormChange(e){
     let formNames=[
-      "name","time","spicyness","slices","diameter","pizzaSlices"
+      "name","time","spicyness","slices","diameter","pizzaSlices",
+      "timeHour","timeMinute","timeSecond"
     ];
     if(formNames.includes(e.target.name)){
       this.setState({
@@ -33,11 +34,10 @@ class DishesForm extends React.Component
   }
 
   handleTimeChange(e){
-    let timeArr = e.target.value.split("");
-    let finalTime = `${timeArr[0]}${timeArr[1]}:${timeArr[2]}${timeArr[3]}:${timeArr[4]}${timeArr[5]}`;
-    this.setState({
-      time: finalTime
-    });
+    e.target.value = e.target.value <0?0:e.target.value;
+    if(e.target.name != "timeHour")
+      e.target.value = Math.min(60,e.target.value);
+    this.handleFormChange(e);
 
   }
 
@@ -73,14 +73,36 @@ class DishesForm extends React.Component
           value={this.state.name}
           onChange={this.handleFormChange}/>
         <Typography variant='subtitle1'>Preparation duration</Typography>
-        <TextField 
-          className="field"
-          variant="filled"
-          name="time"
-          type="text"
-          size="small"
-          value={this.state.time}
-          onChange={this.handleTimeChange}/>
+        <div className="timePick field">
+          <TextField 
+            className="timeField"
+            variant="filled"
+            name="timeHour"
+            type="number"
+            size="small"
+            placeholder="Hours"
+            value={this.state.timeHour}
+            onChange={this.handleTimeChange}/>
+          <TextField 
+            className="timeField"
+            variant="filled"
+            name="timeMinute"
+            type="number"
+            size="small"
+            placeholder="Minutes"
+            value={this.state.timeMinute}
+            onChange={this.handleTimeChange}/>
+          <TextField 
+            className="timeField" 
+            variant="filled"
+            name="timeSecond"
+            type="number"
+            size="small"
+            placeholder="Seconds"
+            value={this.state.timeSecond}
+            onChange={this.handleTimeChange}/>
+          </div>
+        
           <Typography variant='subtitle1'>Type of the dish</Typography>
         <Select className="field" onChange={this.handleSelectChange}>
           <MenuItem value="pizza">Pizza</MenuItem>
