@@ -2,7 +2,7 @@
 import React from 'react';
 import { Paper, TextField, Typography, Select, MenuItem, Button, FormControl, FormHelperText } from '@material-ui/core'; 
 import { SpicyForm, PizzaForm, SandwichForm } from './AdditionalForms/AdditionalForms';
-import {CollapsingMessage, setError, setSuccess}  from './CollapsingError/CollapsingMessage';
+import {CollapsingMessage, setError, setSuccess}  from './CollapsingMessage/CollapsingMessage';
 import { handleFormRequest } from '../services/hadleFormRequest';
 
 
